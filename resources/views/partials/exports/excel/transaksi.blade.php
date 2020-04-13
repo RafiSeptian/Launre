@@ -26,15 +26,15 @@
 					<td>{{ $transaksi->outlet->nama }}</td>
 					<td>{{ $transaksi->member->nama }}</td>
 					<td>{{ $transaksi->kode_invoice }}</td>
-					<td>{{ $transaksi->tgl }}</td>
+                    <td>{{ \Date::parse($transaksi->tgl)->format('d - m - Y') }}</td>
 					<td>{{ $transaksi->batas_waktu }}</td>
-					<td>{{ $transaksi->tgl_bayar }}</td>
+                    <td>{{ \Date::parse($transaksi->tgl_bayar)->format('d - m - Y') }}</td>
 					<td>{{ $transaksi->biaya_tambahan }}</td>
 					<td>{{ $transaksi->diskon }}</td>
 					<td>{{ $transaksi->pajak }}</td>
 					<td>{{ $transaksi->detail->qty }}</td>
-					<td>{{ $transaksi->status }}</td>
-					<td>{{ $transaksi->dibayar }}</td>
+					<td>{{ ucfirst($transaksi->status)  }}</td>
+					<td>{{ ucfirst(str_replace('_', ' ',  $transaksi->dibayar)) }}</td>
 					<td>{{ $transaksi->detail->keterangan }}</td>
 					<td>{{ $transaksi->user->name }}</td>
 				</tr>

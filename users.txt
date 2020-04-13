@@ -1,14 +1,18 @@
 Admin
-larasNur@launre.com
-laras676
+Email : larasNur@launre.com
+Password : laras676
+
+============================================
 
 Petugas
-panjiagustian17@launre.com
-panjiagus17
+Email : panjiagustian17@launre.com
+Password: panjiagus17
 
-vividY@launre.com
-vividY997
+Email : vividY@launre.com
+Password : vividY997
+
+============================================
 
 Owner
-yulianasri@launre.com
-yuliana171
+Email : yulianasri@launre.com
+Password : yuliana171

@@ -10,6 +10,7 @@
       </div>
       <div class="modal-body">
         <form action="{{ route('transaction.export') }}" method="post" id="form-export">
+            {{-- Include CSRF Token --}}
             @csrf
             <div class="form-group">
               <label class="control-label" id="from">Dari</label>
@@ -17,10 +18,10 @@
             </div>
             <div class="form-group">
               <label class="control-label" id="to">Sampai</label>
-              <input type="date" class="form-control" name="to" id="to" min="2020-10-10" required />
+              <input type="date" class="form-control" name="to" id="to" required />
             </div>
             <button type="submit" class="btn btn-primary" id="btn-download">Unduh</button>
-          </form>
+        </form>
       </div>
     </div>
   </div>

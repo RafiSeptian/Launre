@@ -22,17 +22,17 @@ class TransactionController extends Controller
 
 	public function store(Request $request)
 	{
-		// validasi
+		// validation of all request received
 		$this->validate($request, [
 			'id_member' => 'required',
 			'id_paket' => 'required',
-			'status' => 'required',
 			'dibayar' => 'required',
 			'qty' => 'required'
-		], [
+		],
+        // customize the messages validation
+            [
 			'id_member.required' => 'Member harus diisi!',
 			'id_paket.required' => 'Paket harus diisi!',
-			'status.required' => 'Status harus diisi!',
 			'dibayar.required' => 'Dibayar harus diisi!',
 			'qty.required' => 'Qty harus diisi!'
 		]);
@@ -52,7 +52,7 @@ class TransactionController extends Controller
 			$order = 1;
 		}
 
-		// set manual fill the formdata
+		// set manual fill form data
 		$data['id_user']  = Auth::user()->id;
 		if(auth()->user()->role_id !== 1){
 			$data['id_outlet'] = Auth::user()->id_outlet;
@@ -69,13 +69,13 @@ class TransactionController extends Controller
 			$data['tgl_bayar'] = Date::now()->format('Y-m-d H:i:s');
 		}
 
-		$harga = (($package->getOriginal('harga') * $request->berat) * $request->qty) + $request->biaya_tambahan + $request->pajak;
-		$diskon = $package->getOriginal('harga') * $data['diskon'];
+        /* count transaction */
+		$price = (($package->getOriginal('harga') * $request->berat) * $request->qty) + $request->biaya_tambahan + $request->pajak;
+		$discount = $package->getOriginal('harga') * $data['diskon'];
+		$total = $price - $discount;
 
-		$total = $harga - $diskon;
-
+		/* Insert result to database */
 		$transaction = Transaction::create($data);
-		
 		DetailTrans::create([
 			'id_transaksi' => $transaction->id,
 			'id_paket' => $request->id_paket,
@@ -84,7 +84,7 @@ class TransactionController extends Controller
 			'total' => $total,
 			'keterangan' => $request->keterangan
 		]);
-
+        /* returning user to transaction page */
 		return redirect()->route('voyager.transaction.index');
 	}
 
@@ -129,8 +129,6 @@ class TransactionController extends Controller
 
 		$transaction = Transaction::with(['member'])->findOrFail($id);
 
-		$tlp = '+62' . substr($transaction->member->tlp, 1);
-
 		$transaction->update([
 			'id_member' => $request->id_member,
 			'diskon' => $data['diskon'],
@@ -154,7 +152,9 @@ class TransactionController extends Controller
 			'keterangan' => $request->keterangan
 		]);
 
+		/* Send sms to customer if their clothes is already cleaned  */
 		if($transaction->status == 'selesai'){
+            $tlp = '+62' . substr($transaction->member->tlp, 1);
 			Nexmo::message()->send([
 				'to' => $tlp,
 				'from' => 'Launre',
@@ -165,52 +165,47 @@ class TransactionController extends Controller
 		return redirect()->route('voyager.transaction.index');
 	}
 
-	public function datatables(){
-		if(auth()->user()->role_id == 3){
-			$data = Transaction::query()->with(['detail'])->where('id_user', auth()->user()->id)->get();
-		}
+	public function editStatus($id){
+		$transaction = Transaction::findOrFail($id);
+		$data = ['baru', 'proses', 'selesai', 'diambil'];
 
-		$data = Transaction::query()->with(['detail'])->get();
-
-		return DataTables::of($data)->
-		addColumn('outlet', function($data){
-			return $data->outlet->nama;
-		})->
-		addColumn('member', function($data){
-			return $data->member->nama;
-		})->
-		addColumn('status', function($data){
-			return ucfirst($data->status);
-		})->addColumn('dibayar', function($data){
-			return str_replace('_', ' ', ucfirst($data->dibayar));
-		})->
-		addColumn('action', function($data){
-			return view('partials.actions.transactionAction', [
-				'id' => $data->id,
-				'url_edit' => route('voyager.transaction.edit', $data->id),
-				'url_destroy' => route('voyager.transaction.destroy', $data->id)
-			]);
-		})->
-		rawColumns(['action'])->
-		toJson();
+		return view('partials.ChangeStatus', ['transaction' => $transaction, 'data' => $data]);
 	}
 
+	public function updateStatus(Request $request, $id){
+		$transaction = Transaction::findOrFail($id);
+
+		$transaction->update([
+			'status' => $request->status
+		]);
+
+		return response()->json(['msg' => 'Status telah diubah'], 200);
+
+		// return redirect()->route('voyager.transaction.index');
+	}
+
+	    /* Export data from database to Excel by request date*/
 	public function excel(Request $request){
+	    /* catch and parse request */
 		$from = Date::parse($request->from)->format('dmy');
 		$until = Date::parse($request->to)->format('dmy');
 
+		/* Find data in database by request date */
 		$transaction = Transaction::whereDate('created_at', '>=', $request->from)->whereDate('created_at', '<=', $request->to)->get();
 
+		/* If data transaction not found */
 		if(count($transaction) < 1){
+		    /* If request from date is same with request to date*/
 			if($request->from == $request->to){
 				$msg = "Tidak ada Transaksi pada <i>".Date::parse($request->from)->format('d F Y')."</i>";
 			}
 			else{
 				$msg = "Tidak ada Transaksi pada <i>".Date::parse($request->from)->format('d F Y') ." sampai ".Date::parse($request->to)->format('d F Y')."</i>";
 			}
+            /* returning user to create transaction page with session message */
 			return redirect()->route('voyager.transaction.index')->with('err', $msg);
 		}
-
+        /* if data transaction was found, call TransactionExport class and download file with format .xlsx */
 		return Excel::download(new TransactionExport($request->from, $request->to), "transaksi($from-$until).xlsx");
 	}
 
@@ -219,9 +214,11 @@ class TransactionController extends Controller
 
 		if($request->from == $request->to){
 			$transaction->whereDate('created_at', $request->to);
+			$date = Date::parse($request->from)->format('d F Y');
 		}
 		else{
 			$transaction->whereDate('created_at', '>=', $request->from)->whereDate('created_at','<=', $request->to);
+			$date = Date::parse($request->from)->format('d F Y') . ' - ' . Date::parse($request->to)->format('d F Y');
 		}
 
 		if(auth()->user()->role_id == 3){
@@ -239,7 +236,7 @@ class TransactionController extends Controller
 			}
 			return redirect()->route('voyager.transaction.index')->with('err', $msg);
 		}
-		$pdf = PDF::loadView('partials.exports.pdf.transaksi', compact('data'));
+		$pdf = PDF::loadView('partials.exports.pdf.transaksi', ['data' => $data, 'date' => $date]);
 		return $pdf->download('transaksi.pdf');
 	}
 }

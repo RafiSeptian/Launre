@@ -4,6 +4,7 @@
 
 @section('page_header')
 @include('partials.modals.modalPeriode')
+@include('partials.modals.customModal')
 
     <div class="container-fluid">
         @if(Session::get('err'))
@@ -404,5 +405,6 @@
             $('.selected_ids').val(ids);
         });
     </script>
+    <script type="text/javascript" src="{{ asset('js/sweetalert2.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/custom.js') }}"></script>
 @stop

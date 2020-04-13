@@ -10,12 +10,12 @@ class Transaction extends Model
 {
     use SoftDeletes;
 
+    /* Define Properties */
     protected $table = 'tb_transaksi';
-
     protected $guarded = ['id'];
-
     protected $dates = ['deleted_at'];
 
+    /* Define Relationship */
     public function detail(){
     	return $this->hasOne(DetailTrans::class, 'id_transaksi');
     }
@@ -32,10 +32,7 @@ class Transaction extends Model
     	return $this->belongsTo(User::class, 'id_user');
     }
 
-    // public function getCreatedAtAttribute($value){
-    //     return Date::parse($value)->format('d-m-Y H:i:s');
-    // }
-
+    /* Define Accessor */
     public function getBiayaTambahanAttribute($value){
         if($value <= 0){
             return '-';
@@ -72,7 +69,4 @@ class Transaction extends Model
 
         return Date::parse($value)->format('d-m-Y H:i:s');
     }
-
-
-
 }

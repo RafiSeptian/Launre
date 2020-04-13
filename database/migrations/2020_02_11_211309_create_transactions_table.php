@@ -16,10 +16,17 @@ class CreateTransactionsTable extends Migration
         Schema::create('tb_transaksi', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('id_outlet');
-            $table->foreign('id_outlet')->references('id')->on('tb_outlet')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_outlet')
+                ->references('id')->on('tb_outlet')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->string('kode_invoice', 100);
             $table->unsignedBigInteger('id_member');
-            $table->foreign('id_member')->references('id')->on('tb_member')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_member')
+                ->references('id')
+                ->on('tb_member')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->datetime('tgl');
             $table->datetime('batas_waktu');
             $table->datetime('tgl_bayar')->nullable();

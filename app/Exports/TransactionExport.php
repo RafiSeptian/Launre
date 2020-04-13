@@ -12,9 +12,8 @@ use Maatwebsite\Excel\Events\AfterSheet;
 
 class TransactionExport implements FromView, ShouldAutoSize, WithEvents
 {
-    /**
-    * @return \Illuminate\Support\Collection
-    */
+    private $from;
+    private $until;
 
     public function __construct($from, $until){
         $this->from = $from;
@@ -26,15 +25,12 @@ class TransactionExport implements FromView, ShouldAutoSize, WithEvents
 
         if($this->from == $this->until){
             $transaction->whereDate('created_at', $this->until);
-        }
-        else{
+        }else{
             $transaction->whereDate('created_at', '>=', $this->from)->whereDate('created_at','<=', $this->until);
         }
-
         if(auth()->user()->role_id == 3){
             $transaction->where('id_user', auth()->user()->id);
         }
-
         $data = $transaction->get();
 
         return view('partials.exports.excel.transaksi', ['data' => $data]);

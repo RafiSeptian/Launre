@@ -6,8 +6,12 @@
         <title>{{ env('APP_NAME') }}</title>
         <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
         <style type="text/css">
+            @font-face{
+                font-family: 'Montserrat';
+                src:url('{{ asset('fonts/Montserrat-Regular.ttf') }}');
+            }
             body{
-                background:url('/images/bg-hero.svg');
+                background:url('{{ asset('images/bg-hero.svg') }}');
                 background-size:cover;
                 background-repeat: no-repeat;
                 background-position: center center;
@@ -26,6 +30,12 @@
                 top:50%;
                 left:50%;
                 transform:translate(-50%, -50%);
+            }
+
+            .hero-title{
+                font-family: "Segoe UI";
+                font-size: 42px;
+                line-height: 54px;
             }
 
             .btn-start{
@@ -103,8 +113,7 @@
             <div class="row justify-content-center align-items-center">
                 <div class="col-lg-5 col-md-10 hero-text">
                     <h1 class="hero-title text-white mb-5">
-                        Khawatir kehilangan data laundry ? <br>
-                        Tenang Launre akan menjaganya.
+                        Efektifkan manajemen laundry-mu bersama <b>Launre</b>
                     </h1>
                     <a class="btn-start" href="{{ url('/admin') }}">Mulai sekarang</a>
                 </div>
