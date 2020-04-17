@@ -153,14 +153,14 @@ class TransactionController extends Controller
 		]);
 
 		/* Send sms to customer if their clothes is already cleaned  */
-		if($transaction->status == 'selesai'){
-            $tlp = '+62' . substr($transaction->member->tlp, 1);
-			Nexmo::message()->send([
-				'to' => $tlp,
-				'from' => 'Launre',
-				'text' => "Halo {$transaction->member->nama}. Cucian anda sudah kami selesaikan"
-			]);
-		}
+//		if($transaction->status == 'selesai'){
+//            $tlp = '+62' . substr($transaction->member->tlp, 1);
+//			Nexmo::message()->send([
+//				'to' => $tlp,
+//				'from' => 'Launre',
+//				'text' => "Halo {$transaction->member->nama}. Cucian anda sudah kami selesaikan"
+//			]);
+//		}
 
 		return redirect()->route('voyager.transaction.index');
 	}

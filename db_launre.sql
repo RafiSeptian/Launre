@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 07 Mar 2020 pada 15.18
+-- Waktu pembuatan: 17 Apr 2020 pada 12.51
 -- Versi server: 5.7.24
 -- Versi PHP: 7.2.19
 
@@ -113,25 +113,32 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (62, 9, 'tb_member_belongsto_tb_outlet_relationship', 'relationship', 'Outlet', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Outlet\",\"table\":\"tb_outlet\",\"type\":\"belongsTo\",\"column\":\"id_outlet\",\"key\":\"id\",\"label\":\"nama\",\"pivot_table\":\"data_rows\",\"pivot\":\"0\",\"taggable\":\"0\"}', 4),
 (63, 5, 'tb_transaksi_belongsto_tb_member_relationship', 'relationship', 'Nama Member', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Member\",\"table\":\"tb_member\",\"type\":\"belongsTo\",\"column\":\"id_member\",\"key\":\"id\",\"label\":\"nama\",\"pivot_table\":\"data_rows\",\"pivot\":\"0\",\"taggable\":\"0\"}', 3),
 (64, 5, 'tb_transaksi_belongsto_tb_outlet_relationship', 'relationship', 'Outlet', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Outlet\",\"table\":\"tb_outlet\",\"type\":\"belongsTo\",\"column\":\"id_outlet\",\"key\":\"id\",\"label\":\"nama\",\"pivot_table\":\"data_rows\",\"pivot\":\"0\",\"taggable\":\"0\"}', 6),
-(67, 10, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
-(68, 10, 'role_id', 'text', 'Role Id', 0, 0, 0, 1, 1, 1, '{\"validation\":{\"rule\":\"required\",\"messages\":{\"required\":\"Hak Akses harus diisi!\"}}}', 4),
-(69, 10, 'name', 'text', 'Nama', 1, 1, 1, 1, 1, 1, '{\"validation\":{\"rule\":\"required|regex:\\/^[a-zA-Z ]+$\\/\",\"messages\":{\"required\":\"Nama harus diisi!\",\"regex\":\"Nama harus Alfabet!\"}}}', 2),
-(70, 10, 'email', 'text', 'Username', 1, 1, 1, 1, 1, 1, '{\"validation\":{\"rule\":\"required|unique:users,email\",\"messages\":{\"unique\":\"Username ini sudah terdaftar!\",\"required\":\"Nama harus diisi!\"}}}', 3),
-(71, 10, 'avatar', 'image', 'Avatar', 0, 1, 1, 1, 1, 1, '{\"validation\":{\"rule\":\"mimes:png,jpg,jpeg\",\"messages\":{\"mimes\":\"Format harus berupa PNG,JPG, atau JPEG!\"}}}', 8),
-(72, 10, 'password', 'password', 'Password', 1, 0, 0, 1, 1, 1, '{}', 9),
-(73, 10, 'id_outlet', 'text', 'Id Outlet', 0, 0, 0, 1, 1, 1, '{}', 6),
-(74, 10, 'remember_token', 'text', 'Remember Token', 0, 0, 0, 0, 0, 1, '{}', 10),
-(75, 10, 'settings', 'text', 'Settings', 0, 0, 0, 0, 0, 1, '{}', 11),
-(76, 10, 'created_at', 'timestamp', 'Dibuat Pada', 0, 1, 1, 0, 0, 1, '{}', 12),
-(77, 10, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 13),
-(78, 10, 'deleted_at', 'text', 'Deleted At', 0, 1, 1, 0, 0, 1, '{}', 14),
-(79, 10, 'tb_user_belongsto_role_relationship', 'relationship', 'Hak Akses', 0, 1, 1, 1, 1, 1, '{\"model\":\"TCG\\\\Voyager\\\\Models\\\\Role\",\"table\":\"roles\",\"type\":\"belongsTo\",\"column\":\"role_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"data_rows\",\"pivot\":\"0\",\"taggable\":\"0\"}', 5),
-(80, 10, 'tb_user_belongsto_tb_outlet_relationship', 'relationship', 'Outlet', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Outlet\",\"table\":\"tb_outlet\",\"type\":\"belongsTo\",\"column\":\"id_outlet\",\"key\":\"id\",\"label\":\"nama\",\"pivot_table\":\"data_rows\",\"pivot\":\"0\",\"taggable\":\"0\"}', 7),
 (81, 7, 'tb_paket_belongsto_tb_outlet_relationship', 'relationship', 'Outlet', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Outlet\",\"table\":\"tb_outlet\",\"type\":\"belongsTo\",\"column\":\"id_outlet\",\"key\":\"id\",\"label\":\"nama\",\"pivot_table\":\"data_rows\",\"pivot\":\"0\",\"taggable\":\"0\"}', 5),
 (85, 5, 'tb_transaksi_belongsto_tb_user_relationship', 'relationship', 'User', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\User\",\"table\":\"tb_user\",\"type\":\"belongsTo\",\"column\":\"id_user\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"data_rows\",\"pivot\":\"0\",\"taggable\":\"0\"}', 16),
 (86, 5, 'tb_transaksi_hasone_tb_detail_transaksi_relationship', 'relationship', 'Paket', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\DetailTrans\",\"table\":\"tb_detail_transaksi\",\"type\":\"hasOne\",\"column\":\"id_transaksi\",\"key\":\"id\",\"label\":\"id_paket\",\"pivot_table\":\"data_rows\",\"pivot\":\"0\",\"taggable\":\"0\"}', 4),
 (87, 5, 'tb_transaksi_hasone_tb_detail_transaksi_relationship_1', 'relationship', 'Qty', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\DetailTrans\",\"table\":\"tb_detail_transaksi\",\"type\":\"hasOne\",\"column\":\"id_transaksi\",\"key\":\"id\",\"label\":\"qty\",\"pivot_table\":\"data_rows\",\"pivot\":\"0\",\"taggable\":\"0\"}', 5),
-(88, 5, 'tb_transaksi_hasone_tb_detail_transaksi_relationship_2', 'relationship', 'Total', 0, 1, 1, 0, 0, 1, '{\"model\":\"App\\\\DetailTrans\",\"table\":\"tb_detail_transaksi\",\"type\":\"hasOne\",\"column\":\"id_transaksi\",\"key\":\"id\",\"label\":\"total\",\"pivot_table\":\"data_rows\",\"pivot\":\"0\",\"taggable\":\"0\"}', 13);
+(88, 5, 'tb_transaksi_hasone_tb_detail_transaksi_relationship_2', 'relationship', 'Total', 0, 1, 1, 0, 0, 1, '{\"model\":\"App\\\\DetailTrans\",\"table\":\"tb_detail_transaksi\",\"type\":\"hasOne\",\"column\":\"id_transaksi\",\"key\":\"id\",\"label\":\"total\",\"pivot_table\":\"data_rows\",\"pivot\":\"0\",\"taggable\":\"0\"}', 13),
+(89, 11, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(90, 11, 'id_outlet', 'text', 'Id Outlet', 1, 0, 0, 1, 1, 1, '{}', 3),
+(91, 11, 'keterangan', 'text_area', 'Keterangan', 1, 1, 1, 1, 1, 1, '{\"validation\":{\"rule\":\"required\",\"messages\":{\"required\":\"Keterangan harus diisi!\"}}}', 4),
+(92, 11, 'biaya', 'text', 'Biaya', 1, 1, 1, 1, 1, 1, '{\"validation\":{\"rule\":\"required\",\"messages\":{\"required\":\"Keterangan harus diisi!\"}},\"min\":0}', 5),
+(93, 11, 'created_at', 'timestamp', 'Dibuat Pada', 0, 1, 1, 1, 0, 1, '{}', 6),
+(94, 11, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 7),
+(95, 11, 'tb_modal_belongsto_tb_outlet_relationship', 'relationship', 'Cabang', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Outlet\",\"table\":\"tb_outlet\",\"type\":\"belongsTo\",\"column\":\"id_outlet\",\"key\":\"id\",\"label\":\"nama\",\"pivot_table\":\"data_rows\",\"pivot\":\"0\",\"taggable\":\"0\"}', 2),
+(96, 12, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(97, 12, 'role_id', 'text', 'Role Id', 0, 0, 0, 1, 1, 1, '{}', 3),
+(98, 12, 'name', 'text', 'Nama', 1, 1, 1, 1, 1, 1, '{}', 6),
+(99, 12, 'email', 'text', 'Email', 1, 1, 1, 1, 1, 1, '{}', 7),
+(100, 12, 'avatar', 'image', 'Avatar', 0, 1, 1, 1, 1, 1, '{}', 8),
+(101, 12, 'password', 'password', 'Password', 1, 0, 0, 1, 1, 1, '{}', 9),
+(102, 12, 'id_outlet', 'text', 'Id Outlet', 0, 0, 0, 1, 1, 1, '{}', 5),
+(103, 12, 'remember_token', 'text', 'Remember Token', 0, 0, 0, 0, 0, 1, '{}', 10),
+(104, 12, 'settings', 'text', 'Settings', 0, 0, 0, 0, 0, 1, '{}', 11),
+(105, 12, 'created_at', 'timestamp', 'Dibuat Pada', 0, 1, 1, 0, 0, 1, '{}', 12),
+(106, 12, 'updated_at', 'timestamp', 'Diubah Pada', 0, 0, 0, 0, 0, 0, '{}', 13),
+(107, 12, 'deleted_at', 'text', 'Dihapus Pada', 0, 1, 1, 0, 0, 1, '{}', 14),
+(108, 12, 'tb_user_belongsto_role_relationship', 'relationship', 'Hak Akses', 0, 1, 1, 1, 1, 1, '{\"model\":\"TCG\\\\Voyager\\\\Models\\\\Role\",\"table\":\"roles\",\"type\":\"belongsTo\",\"column\":\"role_id\",\"key\":\"id\",\"label\":\"display_name\",\"pivot_table\":\"data_rows\",\"pivot\":\"0\",\"taggable\":\"0\"}', 2),
+(109, 12, 'tb_user_belongsto_tb_outlet_relationship', 'relationship', 'Outlet', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Outlet\",\"table\":\"tb_outlet\",\"type\":\"belongsTo\",\"column\":\"id_outlet\",\"key\":\"id\",\"label\":\"nama\",\"pivot_table\":\"data_rows\",\"pivot\":\"0\",\"taggable\":\"0\"}', 4);
 
 -- --------------------------------------------------------
 
@@ -169,7 +176,8 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 (7, 'tb_paket', 'package', 'Paket', 'Paket', 'voyager-categories', 'App\\Package', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2020-02-26 14:16:28', '2020-02-28 07:12:45'),
 (8, 'tb_outlet', 'outlet', 'Outlet', 'Outlet', 'voyager-shop', 'App\\Outlet', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2020-02-26 14:18:30', '2020-02-28 07:12:10'),
 (9, 'tb_member', 'member', 'Member', 'Members', 'voyager-people', 'App\\Member', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2020-02-26 14:21:30', '2020-02-28 07:10:54'),
-(10, 'tb_user', 'user', 'User', 'Users', 'voyager-people', 'App\\User', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2020-02-27 01:44:37', '2020-02-27 12:36:41');
+(11, 'tb_modal', 'tb-modal', 'Modal', 'Modal', 'voyager-dollar', 'App\\Modal', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2020-04-16 14:36:10', '2020-04-16 14:43:34'),
+(12, 'tb_user', 'tb-user', 'User', 'Users', 'voyager-people', 'App\\User', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2020-04-17 10:48:36', '2020-04-17 10:58:59');
 
 -- --------------------------------------------------------
 
@@ -219,20 +227,22 @@ CREATE TABLE `menu_items` (
 
 INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class`, `color`, `parent_id`, `order`, `created_at`, `updated_at`, `route`, `parameters`) VALUES
 (1, 1, 'Dashboard', '', '_self', 'voyager-boat', NULL, NULL, 1, '2020-02-26 06:41:41', '2020-02-26 06:41:41', 'voyager.dashboard', NULL),
-(2, 1, 'Media', '', '_self', 'voyager-images', NULL, NULL, 8, '2020-02-26 06:41:41', '2020-02-27 01:50:19', 'voyager.media.index', NULL),
+(2, 1, 'Media', '', '_self', 'voyager-images', NULL, NULL, 10, '2020-02-26 06:41:41', '2020-04-17 06:54:26', 'voyager.media.index', NULL),
 (4, 1, 'Hak Akses', '', '_self', 'voyager-lock', '#000000', NULL, 2, '2020-02-26 06:41:41', '2020-02-27 01:51:06', 'voyager.roles.index', 'null'),
-(5, 1, 'Tools', '', '_self', 'voyager-tools', NULL, NULL, 9, '2020-02-26 06:41:41', '2020-02-26 14:36:00', NULL, NULL),
+(5, 1, 'Peralatan', '', '_self', 'voyager-tools', '#000000', NULL, 11, '2020-02-26 06:41:41', '2020-04-17 11:00:09', NULL, ''),
 (6, 1, 'Menu Builder', '', '_self', 'voyager-list', NULL, 5, 1, '2020-02-26 06:41:41', '2020-02-26 14:35:21', 'voyager.menus.index', NULL),
 (7, 1, 'Database', '', '_self', 'voyager-data', NULL, 5, 2, '2020-02-26 06:41:41', '2020-02-26 14:35:21', 'voyager.database.index', NULL),
-(8, 1, 'Compass', '', '_self', 'voyager-compass', NULL, 5, 3, '2020-02-26 06:41:41', '2020-02-26 14:35:21', 'voyager.compass.index', NULL),
+(8, 1, 'Kompas', '', '_self', 'voyager-compass', '#000000', 5, 3, '2020-02-26 06:41:41', '2020-04-17 11:00:26', 'voyager.compass.index', 'null'),
 (9, 1, 'BREAD', '', '_self', 'voyager-bread', NULL, 5, 4, '2020-02-26 06:41:41', '2020-02-26 14:35:21', 'voyager.bread.index', NULL),
-(10, 1, 'Settings', '', '_self', 'voyager-settings', NULL, NULL, 10, '2020-02-26 06:41:41', '2020-02-26 14:36:00', 'voyager.settings.index', NULL),
+(10, 1, 'Pengaturan', '', '_self', 'voyager-settings', '#000000', NULL, 12, '2020-02-26 06:41:41', '2020-04-17 10:59:44', 'voyager.settings.index', 'null'),
 (11, 1, 'Hooks', '', '_self', 'voyager-hook', NULL, 5, 5, '2020-02-26 06:41:42', '2020-02-26 14:35:21', 'voyager.hooks', NULL),
-(12, 1, 'Transaksi', '', '_self', 'voyager-dollar', NULL, NULL, 5, '2020-02-26 14:12:08', '2020-02-27 01:50:19', 'voyager.transaction.index', NULL),
-(13, 1, 'Paket', '', '_self', 'voyager-categories', NULL, NULL, 6, '2020-02-26 14:16:29', '2020-02-27 01:50:19', 'voyager.package.index', NULL),
-(14, 1, 'Outlet', '', '_self', 'voyager-shop', NULL, NULL, 7, '2020-02-26 14:18:31', '2020-02-27 01:50:19', 'voyager.outlet.index', NULL),
-(15, 1, 'Members', '', '_self', 'voyager-people', NULL, NULL, 4, '2020-02-26 14:21:30', '2020-02-27 01:50:19', 'voyager.member.index', NULL),
-(16, 1, 'Users', '', '_self', 'voyager-people', '#000000', NULL, 3, '2020-02-27 01:44:37', '2020-02-27 04:36:19', 'voyager.user.index', 'null');
+(12, 1, 'Transaksi', '', '_self', 'voyager-dollar', NULL, NULL, 6, '2020-02-26 14:12:08', '2020-04-17 06:53:50', 'voyager.transaction.index', NULL),
+(13, 1, 'Paket', '', '_self', 'voyager-categories', NULL, NULL, 8, '2020-02-26 14:16:29', '2020-04-17 06:54:26', 'voyager.package.index', NULL),
+(14, 1, 'Outlet', '', '_self', 'voyager-shop', NULL, NULL, 9, '2020-02-26 14:18:31', '2020-04-17 06:54:26', 'voyager.outlet.index', NULL),
+(15, 1, 'Members', '', '_self', 'voyager-people', NULL, NULL, 4, '2020-02-26 14:21:30', '2020-04-17 06:54:13', 'voyager.member.index', NULL),
+(17, 1, 'Modal', '', '_self', 'voyager-dollar', NULL, NULL, 5, '2020-04-16 14:36:10', '2020-04-17 06:54:13', 'voyager.tb-modal.index', NULL),
+(18, 1, 'Statistik', '/admin/statistic', '_self', 'voyager-bar-chart', '#000000', NULL, 7, '2020-04-16 15:30:39', '2020-04-17 06:54:26', NULL, ''),
+(19, 1, 'Users', '', '_self', 'voyager-people', NULL, NULL, 3, '2020-04-17 10:48:36', '2020-04-17 10:59:32', 'voyager.tb-user.index', NULL);
 
 -- --------------------------------------------------------
 
@@ -280,7 +290,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (27, '2020_02_26_131205_create_field_total', 1),
 (28, '2020_02_26_131606_create_field_id_outlet', 1),
 (29, '2014_10_12_100000_create_password_resets_table', 2),
-(30, '2020_03_07_215219_create_field_berat', 2);
+(30, '2020_03_07_215219_create_field_berat', 2),
+(31, '2020_04_16_104225_create_modals_table', 3);
 
 -- --------------------------------------------------------
 
@@ -347,11 +358,16 @@ INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`
 (44, 'edit_tb_member', 'tb_member', '2020-02-26 14:21:30', '2020-02-26 14:21:30'),
 (45, 'add_tb_member', 'tb_member', '2020-02-26 14:21:30', '2020-02-26 14:21:30'),
 (46, 'delete_tb_member', 'tb_member', '2020-02-26 14:21:30', '2020-02-26 14:21:30'),
-(47, 'browse_tb_user', 'tb_user', '2020-02-27 01:44:37', '2020-02-27 01:44:37'),
-(48, 'read_tb_user', 'tb_user', '2020-02-27 01:44:37', '2020-02-27 01:44:37'),
-(49, 'edit_tb_user', 'tb_user', '2020-02-27 01:44:37', '2020-02-27 01:44:37'),
-(50, 'add_tb_user', 'tb_user', '2020-02-27 01:44:37', '2020-02-27 01:44:37'),
-(51, 'delete_tb_user', 'tb_user', '2020-02-27 01:44:37', '2020-02-27 01:44:37');
+(52, 'browse_tb_modal', 'tb_modal', '2020-04-16 14:36:10', '2020-04-16 14:36:10'),
+(53, 'read_tb_modal', 'tb_modal', '2020-04-16 14:36:10', '2020-04-16 14:36:10'),
+(54, 'edit_tb_modal', 'tb_modal', '2020-04-16 14:36:10', '2020-04-16 14:36:10'),
+(55, 'add_tb_modal', 'tb_modal', '2020-04-16 14:36:10', '2020-04-16 14:36:10'),
+(56, 'delete_tb_modal', 'tb_modal', '2020-04-16 14:36:10', '2020-04-16 14:36:10'),
+(57, 'browse_tb_user', 'tb_user', '2020-04-17 10:48:36', '2020-04-17 10:48:36'),
+(58, 'read_tb_user', 'tb_user', '2020-04-17 10:48:36', '2020-04-17 10:48:36'),
+(59, 'edit_tb_user', 'tb_user', '2020-04-17 10:48:36', '2020-04-17 10:48:36'),
+(60, 'add_tb_user', 'tb_user', '2020-04-17 10:48:36', '2020-04-17 10:48:36'),
+(61, 'delete_tb_user', 'tb_user', '2020-04-17 10:48:36', '2020-04-17 10:48:36');
 
 -- --------------------------------------------------------
 
@@ -428,11 +444,16 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (45, 3),
 (46, 1),
 (46, 3),
-(47, 1),
-(48, 1),
-(49, 1),
-(50, 1),
-(51, 1);
+(52, 1),
+(53, 1),
+(54, 1),
+(55, 1),
+(56, 1),
+(57, 1),
+(58, 1),
+(59, 1),
+(60, 1),
+(61, 1);
 
 -- --------------------------------------------------------
 
@@ -485,7 +506,7 @@ INSERT INTO `settings` (`id`, `key`, `display_name`, `value`, `details`, `type`,
 (4, 'site.google_analytics_tracking_id', 'Google Analytics Tracking ID', NULL, '', 'text', 4, 'Site'),
 (5, 'admin.bg_image', 'Admin Background Image', 'settings\\February2020\\d9GZm2AK2kmHcCJRNnRh.jpg', '', 'image', 5, 'Admin'),
 (6, 'admin.title', 'Admin Title', 'Launre', '', 'text', 1, 'Admin'),
-(7, 'admin.description', 'Admin Description', 'A Best Solution for Dirty Clothes', '', 'text', 2, 'Admin'),
+(7, 'admin.description', 'Admin Description', 'Solusi terbaik untuk pakaian kotor anda', '', 'text', 2, 'Admin'),
 (8, 'admin.loader', 'Admin Loader', 'settings\\February2020\\dwJJ1Sml9iYF27Bs1EgI.png', '', 'image', 3, 'Admin'),
 (9, 'admin.icon_image', 'Admin Icon Image', 'settings\\February2020\\kJzc6GFfb4FQ3etxSX95.png', '', 'image', 4, 'Admin'),
 (10, 'admin.google_analytics_client_id', 'Google Analytics Client ID (used for admin dashboard)', NULL, '', 'text', 1, 'Admin');
@@ -516,7 +537,16 @@ CREATE TABLE `tb_detail_transaksi` (
 INSERT INTO `tb_detail_transaksi` (`id`, `id_transaksi`, `id_paket`, `berat`, `qty`, `total`, `keterangan`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 2, 1, 1.50, 1, 15000, NULL, '2020-02-27 12:37:20', '2020-03-07 15:10:55', NULL),
 (2, 3, 1, 1.00, 1, 10000, NULL, '2020-03-03 02:12:36', '2020-03-03 03:09:43', NULL),
-(3, 4, 1, 1.00, 1, 15000, NULL, '2020-03-07 15:02:54', '2020-03-07 15:04:04', NULL);
+(3, 4, 1, 1.00, 1, 15000, NULL, '2020-03-07 15:02:54', '2020-03-07 15:04:04', NULL),
+(4, 5, 1, 2.50, 1, 27000, 'Harus selesai dalam waktu 2 hari', '2020-04-17 11:49:04', '2020-04-17 11:49:04', NULL),
+(5, 6, 1, 2.00, 1, 24500, NULL, '2020-04-17 11:56:04', '2020-04-17 11:56:04', NULL),
+(6, 7, 2, 3.00, 1, 49985, NULL, '2020-04-17 11:57:33', '2020-04-17 11:58:44', NULL),
+(7, 8, 1, 1.50, 1, 20000, NULL, '2020-04-17 12:02:26', '2020-04-17 12:02:26', NULL),
+(8, 9, 2, 2.50, 1, 52500, NULL, '2020-04-17 12:03:25', '2020-04-17 12:03:25', NULL),
+(9, 10, 3, 3.00, 1, 63000, NULL, '2020-04-17 12:05:57', '2020-04-17 12:05:57', NULL),
+(10, 11, 2, 2.00, 2, 59250, NULL, '2020-04-17 12:06:44', '2020-04-17 12:06:44', NULL),
+(11, 12, 1, 2.50, 1, 30000, NULL, '2020-04-17 12:08:52', '2020-04-17 12:08:52', NULL),
+(12, 13, 2, 2.50, 2, 84970, NULL, '2020-04-17 12:11:58', '2020-04-17 12:18:10', NULL);
 
 -- --------------------------------------------------------
 
@@ -541,9 +571,48 @@ CREATE TABLE `tb_member` (
 --
 
 INSERT INTO `tb_member` (`id`, `id_outlet`, `nama`, `alamat`, `jenis_kelamin`, `tlp`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 3, 'Richard Roe', 'Jalan Ahmad Yani 32, Subang', 'L', '087876574544', '2020-02-27 04:02:27', '2020-03-03 01:56:16', NULL),
-(2, 3, 'Anissa Rahmawati', 'Jalan Soekarto 22, Subang', 'P', '087765765544', '2020-02-27 04:04:52', '2020-02-27 04:04:52', NULL),
-(3, 1, 'Rafi Septian', 'Jalan Panji 77, Subang', 'L', '087836187075', '2020-02-27 04:06:04', '2020-02-28 07:17:23', NULL);
+(1, 3, 'Bambang Saputra', 'Jalan Ahmad Yani 32, Subang', 'L', '087876574544', '2020-02-10 04:02:27', '2020-04-17 12:10:38', NULL),
+(2, 3, 'Anissa Rahmawati', 'Jalan Soekarto 22, Subang', 'P', '087765765544', '2020-02-18 04:04:52', '2020-02-27 04:04:52', NULL),
+(3, 1, 'Rafi Septian', 'Jalan Panji 77, Subang', 'L', '087836187075', '2020-02-27 04:06:04', '2020-02-28 07:17:23', NULL),
+(4, 2, 'Dedi Kurniawan', 'Kpg. Agus Salim No. 804, Jawa Barat', 'L', '083465746678', '2020-02-04 11:30:24', '2020-04-17 11:44:21', NULL),
+(5, 3, 'Arta Dongoran', 'Ki. Pelajar Pejuang 45 No. 279,  Jawa Barat', 'L', '082374658998', '2020-02-18 11:30:42', '2020-04-17 11:41:18', NULL),
+(6, 1, 'Uli Laksmiwati', 'Dk. Padang No. 605, Pematangsiantar 99890, Jawa Barat', 'P', '087764537679', '2020-03-09 11:30:42', '2020-04-17 11:43:04', NULL),
+(7, 4, 'Cici Maryati', 'Psr. Asia Afrika No. 660, Kecamatan Subang, JaBar', 'P', '087875648756', '2020-04-17 11:31:27', '2020-04-17 11:40:09', NULL),
+(8, 5, 'Tirto Saputra Adi', 'Kpg Cibodas Blok 5, Kecamatan Dawuan, Kabupaten Subang, jawa Barat', 'L', '085465737765', '2020-04-06 11:53:19', '2020-04-17 11:53:19', NULL),
+(9, 5, 'Nunung Nurhayati', 'Kpg Cibodas Blok 3, Kecamatan Dawuan, Kabupaten Subang', 'P', '087856763345', '2020-04-16 11:54:15', '2020-04-17 11:54:15', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tb_modal`
+--
+
+CREATE TABLE `tb_modal` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `id_outlet` bigint(20) UNSIGNED NOT NULL,
+  `keterangan` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `biaya` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `tb_modal`
+--
+
+INSERT INTO `tb_modal` (`id`, `id_outlet`, `keterangan`, `biaya`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(2, 3, 'Membeli dua buah bak cucian besar', 40000, '2020-04-16 14:46:34', '2020-04-16 14:46:34', NULL),
+(3, 2, 'Membeli selang 10 meter, sprayer, dan sikat pakaian', 50000, '2020-04-16 14:47:58', '2020-04-16 14:47:58', NULL),
+(4, 1, 'Membeli 4 detergen dan 20 pewangi pakaian', 60000, '2020-04-16 14:49:03', '2020-04-16 14:49:03', NULL),
+(5, 2, 'Memperbaiki Mesin Cuci Nomor 1', 300000, '2020-04-07 17:00:00', '2020-04-17 12:23:04', NULL),
+(6, 1, 'Membeli selang 5 meter', 20000, '2020-04-08 07:14:20', '2020-04-16 14:56:25', NULL),
+(7, 2, 'Membeli 4 detergen dan 10 pewangi', 50000, '2020-04-08 07:17:50', '2020-04-16 14:56:25', NULL),
+(8, 1, 'Membeli satu buah bak cucian ukuran sedang', 15000, '2020-04-08 07:22:01', '2020-04-16 14:56:25', NULL),
+(9, 3, 'Membeli selang 5 meter', 20000, '2020-05-17 04:14:21', '2020-04-16 15:05:09', NULL),
+(10, 3, 'Membeli 2 detergen dan 5 pewangi', 32000, '2020-05-17 05:12:01', '2020-04-16 15:05:09', NULL),
+(11, 4, 'Membeli setrika', 50000, '2020-04-17 12:25:51', '2020-04-17 12:25:51', NULL),
+(12, 5, 'Membeli tiga bak cucian besar', 60000, '2020-04-17 12:37:20', '2020-04-17 12:37:20', NULL);
 
 -- --------------------------------------------------------
 
@@ -566,9 +635,11 @@ CREATE TABLE `tb_outlet` (
 --
 
 INSERT INTO `tb_outlet` (`id`, `nama`, `alamat`, `tlp`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Nusa Indah', 'Jalan Nusa Indah 35, Subang', '087846546437', '2020-02-27 01:57:35', '2020-02-27 01:57:35', NULL),
-(2, 'Tirta Galih', 'Jalan Pabuaran 22, Subang', '087856464456', '2020-02-27 01:58:38', '2020-02-27 01:58:38', NULL),
-(3, 'CuciBersih', 'Jalan Cigadung 34, Subang', '087835265463', '2020-02-27 02:00:01', '2020-02-27 02:00:01', NULL);
+(1, 'Cabang Nusa Indah', 'Jalan Nusa Indah No.35, Kecamatan Subang', '087846546437', '2020-02-27 01:57:35', '2020-04-17 09:52:12', NULL),
+(2, 'Cabang Tirta Galih', 'Jalan Pabuaran No.22, Kecamatan Subang', '087856464456', '2020-01-27 01:58:38', '2020-04-17 09:51:09', NULL),
+(3, 'Cabang Griya', 'Jalan Cigadung No.34, Kecamatan Subang', '087835265463', '2020-02-12 02:00:01', '2020-04-17 09:51:39', NULL),
+(4, 'Cabang Bundaran', 'Jalan Wera Sari No.3D, Kecamatan Subang', '085474658878', '2020-03-10 09:54:25', '2020-04-17 09:54:25', NULL),
+(5, 'Cabang Tambakmekar', 'Jalan Tambakmekar Blok 5, Kecamatan Jalancagak, Kabupaten Subang', '082364758870', '2020-04-17 09:57:49', '2020-04-17 09:57:49', NULL);
 
 -- --------------------------------------------------------
 
@@ -626,9 +697,18 @@ CREATE TABLE `tb_transaksi` (
 --
 
 INSERT INTO `tb_transaksi` (`id`, `id_outlet`, `kode_invoice`, `id_member`, `tgl`, `batas_waktu`, `tgl_bayar`, `biaya_tambahan`, `diskon`, `pajak`, `status`, `dibayar`, `id_user`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(2, 1, '270220-1-1', 3, '2020-02-27 19:37:20', '2020-03-05 19:37:20', NULL, 0, 0, 0, 'baru', 'belum_dibayar', 1, '2020-02-27 12:37:20', '2020-03-07 15:10:55', NULL),
-(3, 3, '030320-3-2', 2, '2020-03-03 09:12:36', '2020-03-10 09:12:36', NULL, 0, 0, 0, 'baru', 'belum_dibayar', 2, '2020-03-03 02:12:36', '2020-03-03 02:12:36', NULL),
-(4, 3, '070320-3-3', 1, '2020-03-07 22:02:54', '2020-03-14 22:02:54', NULL, 0, 0, 5000, 'baru', 'belum_dibayar', 1, '2020-03-07 15:02:54', '2020-03-07 15:03:33', NULL);
+(2, 1, '270220-1-1', 3, '2020-04-05 19:37:20', '2020-03-05 19:37:20', NULL, 0, 0, 0, 'baru', 'belum_dibayar', 1, '2020-02-27 12:37:20', '2020-03-07 15:10:55', NULL),
+(3, 3, '030320-3-2', 2, '2020-04-05 09:12:36', '2020-03-10 09:12:36', NULL, 0, 0, 0, 'baru', 'belum_dibayar', 2, '2020-03-03 02:12:36', '2020-03-03 02:12:36', NULL),
+(4, 3, '070320-3-3', 1, '2020-03-05 22:02:54', '2020-03-14 22:02:54', NULL, 0, 0, 5000, 'baru', 'belum_dibayar', 1, '2020-03-07 15:02:54', '2020-03-07 15:03:33', NULL),
+(5, 1, '170420-1-4', 6, '2020-04-13 18:49:04', '2020-04-24 18:49:04', NULL, 2000, 0, 0, 'baru', 'belum_dibayar', 4, '2020-04-17 11:49:04', '2020-04-17 11:49:04', NULL),
+(6, 4, '170420-4-5', 7, '2020-04-06 18:56:04', '2020-04-24 18:56:04', '2020-04-06 18:56:04', 5000, 0.05, 0, 'baru', 'dibayar', 6, '2020-04-17 11:56:04', '2020-04-17 11:56:04', NULL),
+(7, 4, '170420-4-6', 7, '2020-04-17 18:57:33', '2020-04-24 18:57:33', NULL, 5000, 0.01, 0, 'baru', 'belum_dibayar', 6, '2020-04-17 11:57:33', '2020-04-17 11:58:44', NULL),
+(8, 5, '170420-5-7', 8, '2020-04-13 19:02:26', '2020-04-24 19:02:26', '2020-04-13 19:02:26', 5000, 0, 0, 'proses', 'dibayar', 7, '2020-04-17 12:02:26', '2020-04-17 12:02:26', NULL),
+(9, 2, '170420-5-8', 8, '2020-04-17 19:03:25', '2020-04-24 19:03:25', NULL, 10000, 0, 5000, 'selesai', 'belum_dibayar', 8, '2020-04-17 12:03:25', '2020-04-17 12:04:01', NULL),
+(10, 2, '170420-5-9', 9, '2020-04-15 19:05:57', '2020-04-24 19:05:56', '2020-04-15 19:05:57', 12000, 0, 0, 'baru', 'dibayar', 8, '2020-04-17 12:05:57', '2020-04-17 12:05:57', NULL),
+(11, 5, '170420-5-10', 9, '2020-04-17 19:06:44', '2020-04-24 19:06:44', '2020-04-17 19:06:44', 0, 0.05, 0, 'proses', 'dibayar', 7, '2020-04-17 12:06:44', '2020-04-17 12:06:44', NULL),
+(12, 3, '170420-3-11', 5, '2020-04-17 19:08:52', '2020-04-24 19:08:52', NULL, 5000, 0, 0, 'baru', 'belum_dibayar', 2, '2020-04-17 12:08:52', '2020-04-17 12:08:52', NULL),
+(13, 3, '170420-3-12', 1, '2020-04-17 19:11:58', '2020-04-24 19:11:58', NULL, 10000, 0.2, 0, 'baru', 'belum_dibayar', 2, '2020-04-17 12:11:58', '2020-04-17 12:18:10', NULL);
 
 -- --------------------------------------------------------
 
@@ -659,7 +739,10 @@ INSERT INTO `tb_user` (`id`, `role_id`, `name`, `email`, `avatar`, `password`, `
 (1, 1, 'Laras Nur Aprianti', 'larasNur@launre.com', 'users\\February2020\\HL59VAQqWRGyPL2Yz5qw.jpg', '$2y$10$SXzk9z23aExYO4N3EPo3LeMiAnCe3YhP1lc3L0KotKEbqkeO709im', NULL, NULL, '{\"locale\":\"id\"}', '2020-02-26 06:42:27', '2020-02-26 06:44:40', NULL),
 (2, 3, 'Panji Agustian', 'panjiagustian17@launre.com', 'users\\February2020\\Ys3BeBugLxLeuJ9fNyRO.jpg', '$2y$10$z3ZdWrv3eiyWzQ9GKDlWB.tznX7BztCjDqh0oQINbHBvZvrXADr/C', 3, NULL, '{\"locale\":\"id\"}', '2020-02-26 15:16:59', '2020-02-27 12:35:20', NULL),
 (3, 2, 'Yuliana Sri', 'yulianasri@launre.com', 'users\\February2020\\sbaOWzIZKYrZveWg2sfs.jpg', '$2y$10$WdLJ.07RkxuXxlxvGBufPukKhADGnpmsEYZRMKJGxSHeh3Nt2o7Km', NULL, NULL, '{\"locale\":\"id\"}', '2020-02-26 15:18:56', '2020-02-26 15:18:56', NULL),
-(4, 3, 'Vivid Yuliana', 'vividY@launre.com', 'users\\February2020\\pJVHcBlKc2ENHRfTulsG.jpg', '$2y$10$53OF27WNzdDFxBCmwvblHe2VgXySUxlnXm3bBwi6EOQ4dfeOu2Cbq', 1, NULL, '{\"locale\":\"id\"}', '2020-02-26 15:21:23', '2020-02-27 12:34:49', NULL);
+(4, 3, 'Vivid Yuliani', 'vividY@launre.com', 'users\\February2020\\pJVHcBlKc2ENHRfTulsG.jpg', '$2y$10$53OF27WNzdDFxBCmwvblHe2VgXySUxlnXm3bBwi6EOQ4dfeOu2Cbq', 1, NULL, '{\"locale\":\"id\"}', '2020-02-26 15:21:23', '2020-04-17 10:51:58', NULL),
+(6, 3, 'Rahman Hidayat', 'rhmanH17@launre.com', 'tb-user\\April2020\\YWh60kCnYQfOack0yvK3.jpg', '$2y$10$vD/XRDRNs1INloe3mdbSn.neU941oIAsikcIsN84YNvxpMxtNPiDm', 4, NULL, NULL, '2020-04-17 10:52:40', '2020-04-17 10:55:17', NULL),
+(7, 3, 'Asep Rahman', 'aseprhman81@launre.com', 'tb-user\\April2020\\qvZ2wbkvvRIh9U2h16Y8.jpg', '$2y$10$Apr0CYfiaXv18SjoCF78s.6VgJIFc3XS2LTKiAEtY9yJIywzMVvai', 5, NULL, NULL, '2020-04-17 11:03:25', '2020-04-17 11:03:25', NULL),
+(8, 3, 'Rina Angraeni', 'angraeniRina@launre.com', 'tb-user\\April2020\\vODdmskMhqk39XI2tIBx.jpg', '$2y$10$WpD6UOcaAAEKQk2qfliHA.biba2PgJLyGjZ535coa0kZfKCONifuq', 2, NULL, NULL, '2020-04-17 11:06:32', '2020-04-17 11:06:32', NULL);
 
 -- --------------------------------------------------------
 
@@ -773,6 +856,13 @@ ALTER TABLE `tb_member`
   ADD KEY `tb_member_id_outlet_foreign` (`id_outlet`);
 
 --
+-- Indeks untuk tabel `tb_modal`
+--
+ALTER TABLE `tb_modal`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `tb_modal_id_outlet_foreign` (`id_outlet`);
+
+--
 -- Indeks untuk tabel `tb_outlet`
 --
 ALTER TABLE `tb_outlet`
@@ -825,13 +915,13 @@ ALTER TABLE `user_roles`
 -- AUTO_INCREMENT untuk tabel `data_rows`
 --
 ALTER TABLE `data_rows`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 
 --
 -- AUTO_INCREMENT untuk tabel `data_types`
 --
 ALTER TABLE `data_types`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `menus`
@@ -843,19 +933,19 @@ ALTER TABLE `menus`
 -- AUTO_INCREMENT untuk tabel `menu_items`
 --
 ALTER TABLE `menu_items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT untuk tabel `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT untuk tabel `roles`
@@ -873,19 +963,25 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT untuk tabel `tb_detail_transaksi`
 --
 ALTER TABLE `tb_detail_transaksi`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_member`
 --
 ALTER TABLE `tb_member`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT untuk tabel `tb_modal`
+--
+ALTER TABLE `tb_modal`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_outlet`
 --
 ALTER TABLE `tb_outlet`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_paket`
@@ -897,13 +993,13 @@ ALTER TABLE `tb_paket`
 -- AUTO_INCREMENT untuk tabel `tb_transaksi`
 --
 ALTER TABLE `tb_transaksi`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `translations`
@@ -946,6 +1042,12 @@ ALTER TABLE `tb_detail_transaksi`
 --
 ALTER TABLE `tb_member`
   ADD CONSTRAINT `tb_member_id_outlet_foreign` FOREIGN KEY (`id_outlet`) REFERENCES `tb_outlet` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `tb_modal`
+--
+ALTER TABLE `tb_modal`
+  ADD CONSTRAINT `tb_modal_id_outlet_foreign` FOREIGN KEY (`id_outlet`) REFERENCES `tb_outlet` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `tb_paket`

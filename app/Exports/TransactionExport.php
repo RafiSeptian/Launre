@@ -19,6 +19,7 @@ class TransactionExport implements FromView, ShouldAutoSize, WithEvents
         $this->from = $from;
         $this->until = $until;
     }
+
     public function view() : View
     {
         $transaction = Transaction::with(['member', 'detail', 'user']);

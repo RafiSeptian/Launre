@@ -48,7 +48,7 @@
                                <label class="control-label" for="berat">Berat (Kg)</label>
                                 <input type="number" name="berat" value="{{ $data->detail->berat }}" min="0.1" step="0.1" class="form-control" id="berat">
                            </div>
-                           
+
                            <div class="form-group col-md-12">
                                <label class="control-label" for="qty">Qty</label>
                                 <input type="number" name="qty" value="{{ $data->detail->qty }}" min="0" class="form-control" id="qty">
@@ -66,7 +66,7 @@
 
                            <div class="form-group col-md-12">
                                <label class="control-label" for="diskon">Diskon</label>
-                                <input type="number" name="diskon" value="{{ $data->getOriginal('diskon') }}" class="form-control" id="diskon">
+                                <input type="number" name="diskon" value="{{ $data->getOriginal('diskon') }}" class="form-control" id="diskon" min="0" step="0.1">
                            </div>
 
                            <div class="form-group col-md-12">

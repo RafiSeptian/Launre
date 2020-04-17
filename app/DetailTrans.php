@@ -29,7 +29,7 @@ class DetailTrans extends Model
     }
 
     public function getTotalAttribute($value){
-        return 'Rp. ' . number_format($value);
+        return 'Rp.' . number_format($value);
     }
 
     public function getKeteranganAttribute($value){

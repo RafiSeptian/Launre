@@ -15,6 +15,9 @@ use TCG\Voyager\Events\BreadDataUpdated;
 use TCG\Voyager\Events\BreadImagesDeleted;
 use TCG\Voyager\Facades\Voyager;
 use TCG\Voyager\Http\Controllers\Traits\BreadRelationshipParser;
+use Carbon\Carbon;
+use App\Transaction;
+use App\Member;
 
 class MemberVoyagerController extends \TCG\Voyager\Http\Controllers\VoyagerBaseController
 {
@@ -905,5 +908,37 @@ class MemberVoyagerController extends \TCG\Voyager\Http\Controllers\VoyagerBaseC
 
         // No result found, return empty array
         return response()->json([], 404);
+    }
+
+    public function filterByDay(){
+        // init
+        $trasactions = \App\Transaction::all();
+        $filteredData = [];
+        $filteredMember = [];
+        $dayIndex = CARBON::MONDAY;
+
+        // filter tanggal transaksi berdasarkan hari senin
+        foreach($trasactions as $transaction){
+            if(Carbon::parse($transaction->tgl)->dayOfWeek == $dayIndex){
+                array_push($filteredData, $transaction);
+            }
+        }
+
+        //  masukkan hasil filter kedalam array member untuk mendapatkan id_member
+        foreach($filteredData as $data => $value){
+            array_push($filteredMember, $value->id_member);
+        }
+
+        // filter member yang id_member nya sama dengan array member, kemudian ambil field nama
+        $members = Member::whereIn('id', $filteredMember)->get(['nama']);
+
+        // tampilkan data jika ada
+        if(count($members) > 0){
+            return $members;
+        }
+        // Jika tidak ada data yang ditemukan
+        else{
+            return 'Tidak ada member';
+        }
     }
 }
